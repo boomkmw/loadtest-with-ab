@@ -12,7 +12,8 @@ do
     then
         break
     else
-        ab -n $1 -c $concurrency -g "$1-$concurrency-$countLoop.data" $4
+        ab -n $1 -c $concurrency -g "./result-test/$1-$concurrency-$countLoop-res.data" -e "./result-test/$1-$concurrency-$countLoop-res-serv.csv" $4 > ./result-test/$1-$concurrency-$countLoop-log.txt
+        awk '(NR==21){print $4}' ./result-test/$1-$concurrency-$countLoop-log.txt >> ./result-test/log-req-per-sec.txt
         (( countLoop+=1 ))
     fi
 done
