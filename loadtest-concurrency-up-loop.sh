@@ -34,9 +34,7 @@ do
         done
         (( countLoop+=1 ))
         (( concurrency=$2 ))
-        sleep 60
     fi
-    sleep 60
 done
 
 echo "end test" >> ./result-test/log-req-per-sec.txt
